@@ -1,4 +1,4 @@
-FROM ubuntu:22.04 AS builder
+FROM ubuntu:22.04@sha256:3ba65aa20f86a0fad9df2b2c259c613df006b2e6d0bfcc8a146afb8c525a9751 AS builder
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
         rm /var/lib/dpkg/info/libc-bin.* && \
@@ -31,7 +31,7 @@ RUN mkdir build && \
     generate-random-id dht-server lite-client tolk rldp-http-proxy dht-server proxy-liteserver create-state \
     blockchain-explorer emulator tonlibjson http-proxy adnl-proxy
 
-FROM ubuntu:22.04
+FROM ubuntu:22.04@sha256:3ba65aa20f86a0fad9df2b2c259c613df006b2e6d0bfcc8a146afb8c525a9751
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
     apt-get install -y wget curl libatomic1 openssl libsodium-dev libmicrohttpd-dev liblz4-dev libjemalloc-dev htop \
